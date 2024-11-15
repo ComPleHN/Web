@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            /* margin-top: 1000px; */
+            width: 510px;
+            height: 400px;
+            background-color: antiquewhite;
+        }
+
+        .middle {
+            width: 400px;
+            float: left;
+        }
+
+        .middle img {
+            width: 100%;
+            height: 400px;
+        }
+
+        li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .right {
+            width: 75px;
+            height: 400px;
+            background-color: aqua;
+            float: right;
+            
+        }
+
+        .right ul {
+            width: 75px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .right li {
+            width: 75px;
+            height: 75px;
+            background-color: red;
+            list-style: none;
+            box-sizing: border-box;
+            
+        }
+        
+        .active {
+            border: 5px solid greenyellow;    
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            /* position: relative; */
+            left: 420px;
+            overflow: hidden;
+            border: 1px solid #000a;
+        }
+
+        .big img {
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        
+        }
+
+        .black {
+            width: 200px;
+            height: 200px;
+            background-color: #000a;
+
+            display: none;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="middle">
+            <img src="images/banner011.png" alt="">
+            <div class="black"></div>
+        </div>
+        <div class="right">
+            <ul>
+                <li class="active"><img src="images/banner011.png">/li>
+                <li><img src="images/banner012.jpg">/li>
+                <li><img src="images/banner013.png">/li>
+                <li><img src="images/banner小米酥妻.webp">/li>
+                <li><img src="images/download.png"></li>
+            </ul>
+        </div>
+        <div class="big"><img src="images/banner011.png" alt=""></div>
+        
+    </div>
+    
+    <script>
+        const right = document.querySelector('.right')
+        const middle = document.querySelector('.middle')
+
+        right.addEventListener('mouseover',function(e) {
+
+            if(e.target.tagName == 'IMG') {
+                
+                this.querySelector('.active').classList.remove('active')
+
+                // 当前元素的父元素增加active
+
+                e.target.parentNode.classList.add('active')
+
+                document.querySelector('.middle img').src = e.target.src
+                document.querySelector('.big img').src = e.target.src
+            }
+        })
+
+        middle.addEventListener('mouseenter',show)
+        middle.addEventListener('mouseleave',hide)
+
+        const black = document.querySelector('.black')
+
+        middle.addEventListener('mousemove',function(e) {
+            black.style.display = 'block'
+            // pageX 是在页面的x距离
+            let x = e.pageX - middle.getBoundingClientRect().left;
+            let y = e.pageY - document.documentElement.scrollTop - middle.getBoundingClientRect().top;
+
+            if(x >= 0 && x <= 400 && y >= 0 && y <= 400) {
+
+                let mx = 0,my = 0;
+
+                if(x <= 100) mx = 0
+                if(x > 100 && x < 300) mx = x - 100
+                if(x >= 300) mx = 200
+
+                if(y <= 100) my = 0
+                if(y > 100 && y < 300) my = y - 100
+                if(y >= 300) my = 200
+
+                black.style.left =  mx + 'px';
+                black.style.top = my + 'px';
+                
+                document.querySelector('.big img').style.left = -(x-100)*2 + 'px'
+                document.querySelector('.big img').style.top = -(y-100)*2 + 'px'
+
+
+            }
+        })
+        middle.addEventListener('mouseleave',function() {
+            black.style.display = 'none'
+        })
+
+        const big = document.querySelector('.big')
+
+        let timeId = 0
+        function show() {
+            clearInterval(timeId)
+            big.style.display = 'block'
+        }
+
+        function hide() {
+            timeId = setInterval(function() {
+                big.style.display = 'none'
+            },200)
+        }
+        
+        big.addEventListener('mouseenter',show)
+        big.addEventListener('mouseleave',hide)
+
+        
+
+    
+    </script>
+</body>
+</html>
