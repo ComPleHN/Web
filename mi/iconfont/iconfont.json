@@ -1,0 +1,58 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1306",
+      "name": "购物车空",
+      "font_class": "gouwuchekong",
+      "unicode": "f0179",
+      "unicode_decimal": 983417
+    },
+    {
+      "icon_id": "2674928",
+      "name": "箭头 右",
+      "font_class": "jiantouyou",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "4608968",
+      "name": "时钟",
+      "font_class": "shizhong",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "5282526",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "13646846",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "15722754",
+      "name": "右",
+      "font_class": "you",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "16421520",
+      "name": "箭头-左",
+      "font_class": "jiantou-zuo",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    }
+  ]
+}

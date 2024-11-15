@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        input {
+            transition: all .2s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border: 1px solid #ff5c00 !important;
+            box-shadow: 0 0 3px #ff5c00;
+        }
+
+        .container {
+            display: flex;
+        }
+
+
+
+        .left {
+            background-image: url(images/register_banner.jpg);
+            flex: 1;
+            height: 759px;
+            background-size: cover;
+            float: left;
+        }
+
+        .left img {
+            width: 100%;
+
+        }
+
+        .right {
+            float: right;
+            flex: 3;
+        }
+
+        .header {
+            background-color: #fefefe;
+            height: 80px;
+
+            box-sizing: border-box;
+            padding: 20px;
+
+
+        }
+
+        .header-logo {
+            /* background-color: brown; */
+            /* width: 150px; */
+            float: left;
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .header-logo h1 {
+            display: inline-block;
+            vertical-align: top;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 40px;
+        }
+
+        .header-nav {
+            float: right;
+            height: 40px;
+            /* background-color: yellowgreen; */
+            color: #838383;
+        }
+
+        .header-nav a {
+            color: #838383;
+            transition: all .2s;
+        }
+
+        .header-nav a:hover {
+            color: #ff5c00;
+        }
+
+        .header-nav ul li {
+            font-weight: 600;
+            display: inline-block;
+            line-height: 40px;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        .banner {
+            background-color: #fefefe;
+            height: 639px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            width: 450px;
+            height: 533px;
+            background-color: #ffffff;
+            padding: 40px 45px;
+            box-sizing: border-box;
+            box-shadow: 0 0 20px #fafafa;
+        }
+
+        .box-child {
+            width: 360px;
+            height: 453px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box-child-nav {
+            width: 360px;
+            height: 41px;
+            line-height: 41px;
+            background-color: #fff;
+            position: relative;
+        }
+
+        .box-child-nav .box-child-nav-list a {
+            color: #BBBBBB;
+            font-size: 22px;
+            margin-right: 10px;
+            transition: all .3s;
+        }
+
+
+        .box-child-nav-list .label {
+            width: 44px;
+            height: 5px;
+            border-radius: 5px;
+            background-color: #ff5c00;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all .3s;
+        }
+
+        a.nav {
+            color: #000 !important;
+            font-weight: 700;
+        }
+
+        .box-child-form {
+            width: 360px;
+            height: 396px;
+            background-color: #fff;
+
+        }
+
+        .box-child-form div {
+            width: 360px;
+            height: 60px;
+            background-color: #f9f9f9;
+        }
+
+        .box-child-form div>span {
+            font-size: 12px;
+        }
+
+        #phone input,
+        #password input,
+        #confirm input {
+            width: 360px;
+            height: 60px;
+            background-color: #f9f9f9;
+            outline: none;
+            border: none;
+            font-size: 20px;
+            text-indent: 1em;
+            position: relative;
+        }
+
+
+        #phone label,
+        #password label,
+        #confirm label {
+            position: absolute;
+            top: 18px;
+            left: 1em;
+            font-size: 20px;
+            transition: all .15s;
+            color: #838383;
+            pointer-events:none;
+        }
+
+        #code input {
+            width: 256px;
+            height: 60px;
+            background-color: #f9f9f9;
+            outline: none;
+            border: none;
+            font-size: 20px;
+            text-indent: 1em;
+        }
+
+        #code .Send {
+            width: 98px;
+            height: 60px;
+            outline: none;
+            border: none;
+            background-color: #f9f9f9;
+            color: #ff5c00;
+            font-weight: 700;
+            transition: all .2s;
+        }
+
+        #code .Send:hover {
+            color: #ff5c00cc;
+        }
+
+
+        #phone,
+        #code,
+        #confirm,
+        #password {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #check {
+            display: block;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #check input {
+            width: 18px;
+            height: 18px;
+            vertical-align: text-top;
+        }
+
+        #check span {
+            font-size: 14px;
+            color: #838383;
+        }
+
+        #check a {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        #submit {
+            width: 360px;
+            height: 60px;
+            margin-top: 20px;
+        }
+
+        #submit button {
+            width: 360px;
+            height: 60px;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            transition: all .3s;
+        }
+
+        .mistake {
+            background-color: #fcf2f3 !important;
+        }
+
+        .active {
+            background-color: #ff6900;
+            cursor: pointer;
+
+        }
+
+        .cuoWu {
+            color: red !important;
+        }
+
+        .negative {
+            background-color: #ffc399;
+            cursor: auto;
+        }
+
+        .footer {
+            /* 759-80-639 = 40px */
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 分为左右两个部分 -->
+        <div class="left">
+            <!-- 左边部分只有一张图片,对这张图片使用cover使它平铺 -->
+        </div>
+        <div class="right">
+            <!-- 右边是由三个部分组成 -->
+            <!-- 分别是header,banner,footer -->
+            <div class="header">
+                <!-- 左边是title logo+标题 -->
+                <div class="header-logo">
+                    <img src="images/logo-mi2.png">
+                    <h1>小米账号</h1>
+                </div>
+
+                <div class="header-nav">
+                    <ul>
+                        <a href="">
+                            <li>用户协议</li>
+                        </a>
+                        <a href="">
+                            <li>隐私政策</li>
+                        </a>
+                        <a href="">
+                            <li>帮助中心</li>
+                        </a>
+                        <li>|</li>
+                        <a href="">
+                            <li>中文(简体)</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="banner">
+                <div class="box">
+                    <div class="box-child">
+                        <form action="">
+                        <div class="box-child-nav">
+                            <div class="box-child-nav-list">
+                                <a href="#" class="nav">登录</a>
+                                <a href="#">注册</a>
+                                <div class="label"></div>
+                            </div>
+                        </div>
+                        <div class="box-child-form">
+                            <div id="phone">
+                                <input type="text" name="phone">
+                                <label>手机号</label>
+                                <span></span>
+                            </div>
+                            <div id="password">
+                                <input type="password"  name="password">
+                                <label>密码(6~12位数字+字母)</label>
+                                <span></span>
+                            </div>
+                            <div id="code">
+                                <input type="text" placeholder="验证码(不区分大小写)" name="code">
+                                <button class="Send">获取验证码</button>
+                                <span></span>
+                            </div>
+                            <div id="confirm">
+                                <input type="text" name="confirm">
+                                <label>再次输入密码</label>
+                                <span></span>
+                            </div>
+                            <span id="check">
+                                <input type="checkbox" name="check">
+                                <label></label>
+                                <span>已阅读并同意小米账号 <a href="">用户协议</a>和 <a href="">隐私政策</a></span>
+                            </span>
+                            <div id="submit">
+                                <button class="negative" type="button">注册</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer" style="text-align: center;">
+                小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // 基础变量的声明与获取
+        const phone = document.querySelector('#phone input')
+        const pass = document.querySelector('#password input')
+        const code = document.querySelector('#code input')
+        const confirm = document.querySelector('#confirm input')
+        let phoneTip = false;
+        let passTip = false;
+        let confirmTip = false;
+        const btn = document.querySelector('#submit button')
+        btn.disabled = true
+        
+        const check = document.querySelector('#check input')
+        const f = document.querySelector('form')
+
+        // 三个判断 判断参数是否正确
+        function phoneJudge() {
+            const reg = /^1\d{10}$/
+            const value = phone.value;
+            const span = phone.nextElementSibling.nextElementSibling
+
+            // 输入满足条件
+            if (reg.test(value)) {
+                span.innerHTML = ''
+                phoneTip = true
+            } else if (value == '') {
+                span.innerHTML = '请输入手机号码'
+                phoneTip = false
+            } else {
+                span.innerHTML = '手机号码格式错误'
+                phoneTip = false
+            }
+            if (!phoneTip) {
+                phone.classList.add('mistake')
+                span.style.color = 'red'
+            }
+            else phone.classList.remove('mistake')
+
+            if(!phoneTip)  {
+                phone.nextElementSibling.classList.add('cuoWu');
+            } else if(phoneTip) {
+                phone.nextElementSibling.classList.remove('cuoWu');
+            }
+            
+            judge()
+        }
+        
+        function passJudge() {
+            
+            const reg = /^(?=.*\d)(?=.*[a-zA-Z])[\w\d]{6,12}$/g
+            const value = pass.value;
+            const span = pass.nextElementSibling.nextElementSibling
+
+            if (reg.test(value)) {
+                span.innerHTML = ''
+                passTip = true;
+            } else if (value == '') {
+                span.innerHTML = '请输入您设置的密码'
+                passTip = false;
+            } else {
+                span.innerHTML = '密码格式错误(6~12位数字+字母)'
+                passTip = false;
+            }
+            if (!passTip) {
+                pass.classList.add('mistake')
+                span.style.color = 'red'
+            }
+            else pass.classList.remove('mistake')
+
+
+            if(!passTip)  {
+                pass.nextElementSibling.classList.add('cuoWu');
+            } else if(passTip) {
+                pass.nextElementSibling.classList.remove('cuoWu');
+            }
+
+            confirmJudge()
+            judge()
+        }
+        
+        function confirmJudge() {
+
+            const value = confirm.value;
+            const span = confirm.nextElementSibling.nextElementSibling
+
+            if (value != pass.value) {
+                span.innerHTML = '两次输入的密码不一样'
+                confirmTip = false;
+            } else if (value == '') {
+                span.innerHTML = '请重复您的密码'
+                confirmTip = false;
+            } else if (value == pass.value) {
+                span.innerHTML = ''
+                confirmTip = true;
+            }
+            if (!confirmTip) {
+                confirm.classList.add('mistake')
+                span.style.color = 'red'
+            }
+            else confirm.classList.remove('mistake')
+            
+            if(!confirm)  {
+                confirm.nextElementSibling.classList.add('cuoWu');
+            } else if(confirm) {
+                confirm.nextElementSibling.classList.remove('cuoWu');
+            }
+            
+            judge()
+        }
+        
+        // 这个是判断是否可以提交
+        function judge() {
+            if (phoneTip && passTip && confirmTip) {
+                btn.disabled = false
+                btn.className = 'active'
+                console.log('qiehuan')
+            } else {
+                btn.className = 'negative'
+            }
+        }
+        // 给三个需要输入的给予事件监听
+        phone.addEventListener('input', phoneJudge)
+        pass.addEventListener('input', passJudge)
+        confirm.addEventListener('input', confirmJudge)
+
+        // 这些事实现input中字的变化
+        phone.addEventListener('focus',function() {
+            const p = phone.nextElementSibling
+            p.style.top = '1px'
+            p.style.fontSize = '15px'
+            p.style.left = '20px'
+        })
+        phone.addEventListener('blur',function() {
+            const p = phone.nextElementSibling
+            
+            if(phone.value == '') {
+                p.style.top = '18px'
+                p.style.fontSize = '20px'
+                p.style.left = '20px'
+            }
+        })
+        pass.addEventListener('focus',function() {
+            const p = pass.nextElementSibling
+            p.style.top = '1px'
+            p.style.fontSize = '15px'
+            p.style.left = '20px'
+            p.innerHTML = '密码'
+        })
+        pass.addEventListener('blur',function() {
+            const p = pass.nextElementSibling
+            
+            if(pass.value == '') {
+                p.style.top = '18px'
+                p.style.fontSize = '20px'
+                p.style.left = '20px'
+                p.innerHTML = '密码(6~12位数字+字母)'
+            }
+        })
+        confirm.addEventListener('focus',function() {
+            const p = confirm.nextElementSibling
+            p.style.top = '1px'
+            p.style.fontSize = '15px'
+            p.style.left = '20px'
+            p.innerHTML = '重复密码'
+        })
+        confirm.addEventListener('blur',function() {
+            const p = confirm.nextElementSibling
+            
+            if(confirm.value == '') {
+                p.style.top = '18px'
+                p.style.fontSize = '20px'
+                p.style.left = '20px'
+                p.innerHTML = '重复密码'
+            }
+        })
+
+
+
+
+        // 提交按钮的 事件
+        
+        btn.addEventListener('click', function () {
+            if (check.checked == false) {
+                if (window.confirm('请勾选用户协议(点击确定将勾选并注册)'))
+                    check.checked = true
+            }
+            else if (check.checked == true) {
+                alert(`
+                    注册信息:
+                    手机号:${phone.value}
+                    密码:${pass.value}
+                    验证码:${code.value}
+                `)
+                if(window.confirm('确认是否注册'))
+                f.submit()
+            }  
+        })
+
+        const nav1 = document.querySelector('.box-child-nav-list a:nth-child(1)')
+        const nav2 = document.querySelector('.box-child-nav-list a:nth-child(2)')
+        const line = document.querySelector('.label')
+
+        // 两个导航栏的切换
+        nav1.addEventListener('click', function () {
+            document.querySelector('.nav').classList.remove('nav')
+            this.classList.add('nav')
+            line.style.left = '0'
+        })
+        nav2.addEventListener('click', function () {
+            document.querySelector('.nav').classList.remove('nav')
+            this.classList.add('nav')
+            line.style.left = '58px'
+
+        }) 
+        
+        // 左边的图像进行消失 , 当界面小于984px时
+        const left = document.querySelector('.left')
+        window.addEventListener('resize', function() {
+            console.log(window.innerWidth)
+            if(window.innerWidth <= 984) {
+                console.log('123')
+                left.style.flex = 0
+            } else {
+                left.style.flex = 1
+            }
+        })
+    </script>
+</body>
+</html>
